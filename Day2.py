@@ -9,6 +9,7 @@ def readInput():
         f.close()
     return lines
 
+#part 1 and 2 cause 2 is just one line of code
 def part1():
     redpattern = r"(\d+)\s+red"
     bluepattern = r"(\d+)\s+blue"
@@ -26,9 +27,37 @@ def part1():
         if red[0] <= 12 and green[0] <= 13 and blue[0] <= 14:
             endres += i + 1
         power.append(red[0] * green[0] * blue[0])
-    return sum(power)
+    return endres, sum(power)
+
+def part1_without_regex():
+    endres = 0
+    power = []
+    for i in range(len(lines)):
+        parts = lines[i].split(";")
+        colorHighest = {}
+        for part in parts:
+            items = part.split(",")
+            for item in items:
+                split_item = item.strip().split(' ')
+                if len(split_item) == 2:
+                    value, color = split_item
+                    value = int(value)
+                    if color in colorHighest:
+                        if colorHighest[color] <= value:
+                            print("current: " + str(colorHighest[color]), "new: " + str(value), color)
+                            colorHighest[color] = value
+                    elif color not in colorHighest:
+                        colorHighest[color] = value
+        print(colorHighest)
+
+        if colorHighest['red'] <= 12 and colorHighest['green'] <= 13 and colorHighest['blue'] <= 14:
+            #add index + 1 to endres
+            endres += i + 1
+        power.append(colorHighest['red'] * colorHighest['green'] * colorHighest['blue'])
+    return endres, sum(power)
 
 if __name__ == "__main__":
     lines = readInput()
     print(part1())
-    aoc_lube.submit(year=2023, day=2, part=2, solution=part1)
+    print(part1_without_regex())
+    #aoc_lube.submit(year=2023, day=2, part=2, solution=part1)
