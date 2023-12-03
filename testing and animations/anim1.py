@@ -42,7 +42,7 @@ def main():
                         print(term.move_xy(term.width - len(variable2), 1) + variable2)
                         line = re.sub(nums[j], numerals[j], line)
                         print(line)
-                        time.sleep(0.001)  # Adjust the sleep time as needed for the animation effect
+                        time.sleep(0.01)  # Adjust the sleep time as needed for the animation effect
                     # Extract numbers from the final line
                     for j in line:
                         if j.isdigit():
