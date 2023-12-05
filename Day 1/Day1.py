@@ -5,7 +5,7 @@ import sys
 import time
 
 def readInput():
-    with open("input/input1.txt") as f:
+    with open("Day 1/input/input1.txt") as f:
         lines = f.readlines()
         #remove \n
         lines = [x.strip() for x in lines]

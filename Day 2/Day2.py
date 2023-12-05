@@ -2,7 +2,7 @@ import re
 import aoc_lube
 
 def readInput():
-    with open("input/input2.txt") as f:
+    with open("Day 2\input\input2.txt") as f:
         lines = f.readlines()
         #remove \n
         lines = [x.strip() for x in lines]
